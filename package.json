@@ -1,0 +1,23 @@
+{
+  "name": "react-demo",
+  "version": "1.0.0",
+  "description": "FactoryFour React demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/factoryfour/react-demo.git"
+  },
+  "author": "Alex Mathews",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/factoryfour/react-demo/issues"
+  },
+  "homepage": "https://github.com/factoryfour/react-demo#readme",
+  "private": true,
+  "devDependencies": {
+    "webpack": "^2.5.1"
+  }
+}
