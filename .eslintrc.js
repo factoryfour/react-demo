@@ -10,5 +10,8 @@ module.exports = {
         "no-tabs": ["off"],
         "react/jsx-indent": ["error", "tab"],
         "comma-dangle": ["off"]
+    },
+    "globals": {
+        "document": true
     }
 };
