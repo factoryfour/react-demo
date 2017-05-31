@@ -9530,18 +9530,29 @@ module.exports = __webpack_require__(19);
 "use strict";
 
 
-var React = __webpack_require__(81);
-var ReactDOM = __webpack_require__(80);
+var _react = __webpack_require__(81);
 
-var Main = function Main() {
-	return React.createElement(
-		'div',
-		null,
-		'Hello World'
-	);
-};
+var _react2 = _interopRequireDefault(_react);
 
-ReactDOM.render(React.createElement(Main, null), document.getElementById('app'));
+var _reactDom = __webpack_require__(80);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _App = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./App\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+var _App2 = _interopRequireDefault(_App);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('app')); /*const React = require('react');
+                                                                                                               const ReactDOM = require('react-dom');
+                                                                                                               
+                                                                                                               const Main = () =>
+                                                                                                               	(<div>
+                                                                                                               		Helloasdf World
+                                                                                                               	</div>);
+                                                                                                               
+                                                                                                               ReactDOM.render(<Main />, document.getElementById('app'));*/
 
 /***/ }),
 /* 83 */
