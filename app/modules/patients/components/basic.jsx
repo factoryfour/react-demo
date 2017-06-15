@@ -5,7 +5,8 @@ class Patient extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			last: 'Singh'
+			last: 'Singh',
+			flagged: false
 		};
 	}
 
