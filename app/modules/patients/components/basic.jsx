@@ -10,7 +10,6 @@ class Patient extends Component {
 		};
 	}
 
-
 	render() {
 		return <h1> This is a Patient: {this.props.name} {this.state.last}</h1>;
 	}
