@@ -1,34 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { toggleFlag } from '../actions/basic.jsx';
 
-class Patient extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			last: 'Singh',
-			flagged: false
-		};
-		this.click = this.click.bind(this);
-	}
+const Patient = ({ flagged, onFlagClick }) => (
+	<p>
+		This is a Patient flag: {String(flagged)}
+		<button onClick={() => onFlagClick()}>Toggle Flag</button>
 
-
-	click() {
-		console.log('hello');
-	}
-
-	render() {
-		return (
-			<p>
-				This is a Patient: {this.props.name} {this.state.last}
-				<button onClick={this.click}>Toggle Flag</button>
-			</p>
-		);
-	}
-}
+	</p>
+);
 
 Patient.propTypes = {
-	name: PropTypes.string.isRequired
+	flagged: PropTypes.bool.isRequired,
+	onFlagClick: PropTypes.func.isRequired
 };
-
 export default Patient;
