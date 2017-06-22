@@ -5,7 +5,6 @@ const Patient = ({ flagged, onFlagClick }) => (
 	<p>
 		This is a Patient flag: {String(flagged)}
 		<button onClick={() => onFlagClick()}>Toggle Flag</button>
-
 	</p>
 );
 
