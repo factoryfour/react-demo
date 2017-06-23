@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import App from './App.jsx';
+import AuthService from '../utils/AuthService.js';
 
 class AppContainer extends React.Component {
 	componentDidMount() {
-
+		const authService = new AuthService();
+		authService.login();
 	}
 
 	render() {
@@ -12,4 +14,5 @@ class AppContainer extends React.Component {
 	}
 }
 
-export default connect()(AppContainer);
+export default AppContainer;
+// export default connect()(AppContainer);

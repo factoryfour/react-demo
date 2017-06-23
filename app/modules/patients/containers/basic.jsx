@@ -4,7 +4,7 @@ import Patient from '../components/basic.jsx';
 
 const mapStateToProps = (state) => {
 	return {
-		flagged: state.flagged
+		flagged: state.patientApp.flagged
 	};
 };
 
