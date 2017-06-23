@@ -13,6 +13,7 @@ export default function authReducer(state = {
 			// return {...state, isFetching: true, error: null}
       return {isFetching: true, error: null}
     case ActionTypes.LOGIN_SUCCESS:
+		console.log('LOGIN_SUCCESS');
 			// return {...state, isFetching: false, isAuthenticated: true, profile: action.profile}
       return {isFetching: false, isAuthenticated: true, profile: action.profile}
     case ActionTypes.LOGIN_ERROR:

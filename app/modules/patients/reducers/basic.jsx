@@ -11,7 +11,6 @@ function flag(state = false, action) {
 }
 
 function patientApp(state = {}, action) {
-	console.log('patientApp');
 	return {
 		flagged: flag(state.flagged, action)
 	};

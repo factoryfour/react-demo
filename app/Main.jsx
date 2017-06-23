@@ -11,8 +11,9 @@ const store = createStore(combineReducers({
 	authApp
 }));
 
-console.log(store.getState());
-
+store.subscribe(() =>
+	console.log(store.getState())
+);
 ReactDOM.render(
 	<Provider store={store}>
 		<AppContainer />
