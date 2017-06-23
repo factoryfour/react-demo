@@ -31,9 +31,26 @@ export default class AuthService {
 	// ======================================================
 	// Public methods
 	// ======================================================
-	login() {
+	login(successCallback) {
 		// Call the show method to display the widget.
 		this.lock.show();
+
+		this.lock.on('authenticated', (authResult) => {
+			this.lock.getProfile(authResult.idToken, (error, profile) => {
+				if (error) {
+					console.error(error);
+				}
+
+				if (profile.orgType !== config.appType) {
+					console.error('wrong application');
+				} else {
+					AuthService.setToken(authResult.idToken);
+					AuthService.setProfile(profile);
+					successCallback(profile);
+					this.lock.hide();
+				}
+			});
+		});
 	}
 
 	// ======================================================
@@ -43,7 +60,6 @@ export default class AuthService {
 		// Checks if there is a saved token and it's still valid
 		const token = AuthService.getToken();
 		const profile = AuthService.getProfile();
-		console.log(profile);
 		return token && profile && !AuthService.isTokenExpired(token);
 	}
 

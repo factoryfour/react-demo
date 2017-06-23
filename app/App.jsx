@@ -9,28 +9,56 @@ import About from './routes/About.jsx';
 import Home from './routes/Home.jsx';
 import AuthService from '../utils/AuthService.js';
 
-const App = ({ onLogout }) => (
-	<Router>
-		<div>
-			<ul>
-				<li><Link to="/">Home</Link></li>
-				<li><Link to="/about">About</Link></li>
-			</ul>
+class App extends React.Component {
 
-			<button onClick={() => {
-				onLogout();
-				AuthService.logout();
-			}}>Logout</button>
-			<hr />
+	constructor(props) {
+		super(props);
+		this.authService = new AuthService();
+	}
 
-			<Route exact path="/" component={Home} />
-			<Route path="/about" component={About} />
-		</div>
-	</Router>
-);
+	componentDidMount() {
+		if (!this.props.isAuthenticated) {
+			this.authService.login(this.props.onLoginSuccess);
+		}
+	}
+
+	componentWillUpdate(nextProps) {
+		if (!nextProps.isAuthenticated) {
+			this.authService.login(nextProps.onLoginSuccess);
+		}
+	}
+
+	render() {
+		return (
+			<Router>
+				<div>
+					<ul>
+						<li><Link to="/">Home</Link></li>
+						<li><Link to="/about">About</Link></li>
+					</ul>
+
+					<button
+						onClick={() => {
+							this.props.onLogoutSuccess();
+							AuthService.logout();
+						}}
+					>
+						Logout
+					</button>
+					<hr />
+
+					<Route exact path="/" component={Home} />
+					<Route path="/about" component={About} />
+				</div>
+			</Router>
+		);
+	}
+}
 
 App.propTypes = {
-	onLogout: PropTypes.func.isRequired
+	isAuthenticated: PropTypes.bool.isRequired,
+	onLoginSuccess: PropTypes.func.isRequired,
+	onLogoutSuccess: PropTypes.func.isRequired
 };
 
 export default App;
