@@ -5,7 +5,7 @@ import config from './config';
 export default class AuthService {
 	constructor() {
 		// Configure Auth0 lock
-		this.lock = new Auth0Lock(config.AUTH0_CLIENT_ID, config.AUTH0_DOMAIN, {
+		this.lock = new Auth0Lock(config.clientId, config.domain, {
 			auth: {
 				responseType: 'token'
 			},
