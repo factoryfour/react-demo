@@ -1,49 +1,70 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import App from './App.jsx';
 import AuthService from '../utils/AuthService.js';
-import { loginSuccess } from '../utils/auth.actions.jsx';
-import PropTypes from 'prop-types';
+import { loginSuccess, logoutSuccess } from '../utils/auth.actions.jsx';
+
+const mapStateToProps = (state) => {
+	return {
+		isAuthenticated: state.authApp.isAuthenticated
+	};
+};
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onLoginSuccess: (profile) => {
 			dispatch(loginSuccess(profile));
+		},
+		onLogoutSuccess: () => {
+			dispatch(logoutSuccess());
 		}
 	};
 };
 
 class AppContainer extends React.Component {
-	componentDidMount() {
+	static loginProcess(loginCallback) {
 		const authService = new AuthService();
 
-		if (!AuthService.loggedIn()) {
-			authService.login();
+		authService.login();
 
-			authService.lock.on('authenticated', (authResult) => {
-				authService.lock.getProfile(authResult.idToken, (error, profile) => {
-					if (error) {
-						console.error(error);
-					}
+		authService.lock.on('authenticated', (authResult) => {
+			authService.lock.getProfile(authResult.idToken, (error, profile) => {
+				if (error) {
+					console.error(error);
+				}
 
-					AuthService.setToken(authResult.idToken);
-					AuthService.setProfile(profile);
-					this.props.onLoginSuccess(profile);
-					authService.lock.hide();
-				});
+				AuthService.setToken(authResult.idToken);
+				AuthService.setProfile(profile);
+				loginCallback(profile);
+				authService.lock.hide();
 			});
+		});
+	}
+
+	componentDidMount() {
+		if (!AuthService.loggedIn()) {
+			AppContainer.loginProcess(this.props.onLoginSuccess);
+		}
+	}
+
+	componentWillUpdate(nextProps) {
+		if (!nextProps.isAuthenticated) {
+			AppContainer.loginProcess(nextProps.onLoginSuccess);
 		}
 	}
 
 	render() {
-		return <App />;
+		return <App onLogout={this.props.onLogoutSuccess} />;
 	}
 }
 AppContainer.propTypes = {
-	onLoginSuccess: PropTypes.func.isRequired
+	isAuthenticated: PropTypes.bool.isRequired,
+	onLoginSuccess: PropTypes.func.isRequired,
+	onLogoutSuccess: PropTypes.func.isRequired
 };
 
 export default connect(
-	null,
+	mapStateToProps,
 	mapDispatchToProps
 )(AppContainer);
