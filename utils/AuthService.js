@@ -1,3 +1,4 @@
+/* global window*/
 import Auth0Lock from 'auth0-lock';
 import jwtDecode from 'jwt-decode';
 import config from './config';
@@ -41,12 +42,13 @@ export default class AuthService {
 	static loggedIn() {
 		// Checks if there is a saved token and it's still valid
 		const token = AuthService.getToken();
-		return !!token && !AuthService.isTokenExpired(token);
+		const profile = AuthService.getProfile();
+		return !token || !profile || !AuthService.isTokenExpired(token);
 	}
 
 	static logout() {
 		// Clear user token and profile data from window.localStorage
-		window.localStorage.removeItem('id_token');
+		window.localStorage.removeItem('idToken');
 		window.localStorage.removeItem('profile');
 	}
 
@@ -64,12 +66,12 @@ export default class AuthService {
 
 	static setToken(idToken) {
 		// Saves user token to window.localStorage
-		window.localStorage.setItem('id_token', idToken);
+		window.localStorage.setItem('idToken', idToken);
 	}
 
 	static getToken() {
 		// Retrieves the user token from window.localStorage
-		return window.localStorage.getItem('id_token');
+		return window.localStorage.getItem('idToken');
 	}
 
 	static getTokenExpirationDate() {
