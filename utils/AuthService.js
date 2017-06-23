@@ -41,14 +41,10 @@ export default class AuthService {
 					console.error(error);
 				}
 
-				if (profile.orgType !== config.appType) {
-					console.error('wrong application');
-				} else {
-					AuthService.setToken(authResult.idToken);
-					AuthService.setProfile(profile);
-					successCallback(profile);
-					this.lock.hide();
-				}
+				AuthService.setToken(authResult.idToken);
+				AuthService.setProfile(profile);
+				successCallback(profile);
+				this.lock.hide();
 			});
 		});
 	}
