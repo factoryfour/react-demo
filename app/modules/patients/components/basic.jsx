@@ -21,7 +21,10 @@ class Patient extends React.Component {
 					Loading: {String(this.props.loading)}
 				</div>
 				<div>
-					Status: {JSON.stringify(this.props.status)}
+					Status:
+					<pre>
+						{JSON.stringify(this.props.status, null, 2)}
+					</pre>
 				</div>
 				<div>
 					Flagged: {String(this.props.flagged)}
