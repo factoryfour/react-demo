@@ -30,15 +30,6 @@ function loading(state = false, action) {
 	}
 }
 
-
-// function patientApp(state = {}, action) {
-// 	return {
-// 		flagged: flag(state.flagged, action),
-// 		status: status(state.status, action),
-// 		loading: loading(state.loading, action)
-// 	};
-// }
-
 export default combineReducers({
 	flagged,
 	status,
