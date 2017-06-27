@@ -3,7 +3,15 @@ import PropTypes from 'prop-types';
 
 class Patient extends React.Component {
 	componentDidMount() {
-		this.props.loadData();
+		if (this.props.isAuthenticated) {
+			this.props.loadData();
+		}
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.isAuthenticated && !this.props.isAuthenticated) {
+			this.props.loadData();
+		}
 	}
 
 	render() {
@@ -26,6 +34,7 @@ class Patient extends React.Component {
 
 Patient.propTypes = {
 	flagged: PropTypes.bool.isRequired,
+	isAuthenticated: PropTypes.bool.isRequired,
 	loadData: PropTypes.func.isRequired,
 	loading: PropTypes.bool.isRequired,
 	onFlagClick: PropTypes.func.isRequired,

@@ -57,7 +57,10 @@ export default class AuthService {
 		// Checks if there is a saved token and it's still valid
 		const token = AuthService.getToken();
 		const profile = AuthService.getProfile();
-		return token && profile && !AuthService.isTokenExpired(token);
+		if (token && profile && !AuthService.isTokenExpired(token)) {
+			return true;
+		}
+		return false;
 	}
 
 	static logout() {

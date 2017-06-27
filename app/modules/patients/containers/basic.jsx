@@ -4,6 +4,7 @@ import Patient from '../components/basic.jsx';
 
 const mapStateToProps = state => ({
 	flagged: state.patientApp.flagged,
+	isAuthenticated: state.authApp.isAuthenticated,
 	loading: state.patientApp.loading,
 	status: state.patientApp.status
 });
