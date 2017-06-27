@@ -7,6 +7,7 @@ export default class AuthService {
 	constructor() {
 		// Configure Auth0 lock
 		this.lock = new Auth0Lock(config.clientId, config.domain, {
+			responseType: 'token',
 			auth: {
 				redirect: false,
 				responseType: 'token'

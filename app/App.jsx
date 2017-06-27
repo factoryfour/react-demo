@@ -5,6 +5,8 @@ import {
   Link
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import axios from 'axios';
+
 import About from './routes/About.jsx';
 import Home from './routes/Home.jsx';
 import AuthService from '../utils/AuthService.js';
@@ -14,6 +16,13 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.authService = new AuthService();
+
+		axios.get('https://api-dev.factoryfour.com/patients/health/status', {
+		}).then((response) => {
+			console.log(response);
+		}, (error) => {
+			console.error(error);
+		});
 	}
 
 	componentDidMount() {
