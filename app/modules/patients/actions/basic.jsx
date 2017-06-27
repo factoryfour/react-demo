@@ -10,14 +10,27 @@ export function toggleFlag() {
 	};
 }
 
-export function requestData() {
+function requestData() {
 	return {
 		type: REQUEST_DATA
 	};
 }
 
-export function receiveData() {
+function receiveData(response) {
 	return {
-		type: RECEIVE_DATA
+		type: RECEIVE_DATA,
+		status: response
+	};
+}
+
+export function fetchData() {
+	return (dispatch) => {
+		dispatch(requestData);
+
+		return axios.get('https://api-dev.factoryfour.com/patients/health/status')
+			.then(response => response.data, (error) => {
+				console.error(error);
+			})
+			.then(response => dispatch(receiveData(response)));
 	};
 }

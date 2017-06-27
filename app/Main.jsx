@@ -1,19 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 import patientApp from './modules/patients/reducers/basic.jsx';
 import AppContainer from './AppContainer.jsx';
 import authApp from '../utils/auth.reducer.jsx';
+import { fetchData } from './modules/patients/actions/basic.jsx';
 
-const store = createStore(combineReducers({
-	patientApp,
-	authApp
-}));
+const store = createStore(
+	combineReducers({
+		patientApp,
+		authApp
+	}),
+	applyMiddleware(
+		thunkMiddleware
+	)
+);
 
 store.subscribe(() =>
 	console.log(store.getState())
 );
+
+store.dispatch(fetchData());
 
 ReactDOM.render(
 	<Provider store={store}>
