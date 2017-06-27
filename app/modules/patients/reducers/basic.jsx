@@ -1,7 +1,7 @@
-import { TOGGLE_FLAG } from '../actions/basic.jsx';
-// import { combineReducers } from 'redux';
+import { combineReducers } from 'redux';
+import { TOGGLE_FLAG, REQUEST_DATA, RECEIVE_DATA } from '../actions/basic.jsx';
 
-function flag(state = false, action) {
+function flagged(state = false, action) {
 	switch (action.type) {
 	case TOGGLE_FLAG:
 		return !state;
@@ -10,10 +10,37 @@ function flag(state = false, action) {
 	}
 }
 
-function patientApp(state = {}, action) {
-	return {
-		flagged: flag(state.flagged, action)
-	};
+function status(state = {}, action) {
+	switch (action.type) {
+	case RECEIVE_DATA:
+		return action.status;
+	default:
+		return state;
+	}
 }
 
-export default patientApp;
+function loading(state = false, action) {
+	switch (action.type) {
+	case REQUEST_DATA:
+		return true;
+	case RECEIVE_DATA:
+		return false;
+	default:
+		return state;
+	}
+}
+
+
+// function patientApp(state = {}, action) {
+// 	return {
+// 		flagged: flag(state.flagged, action),
+// 		status: status(state.status, action),
+// 		loading: loading(state.loading, action)
+// 	};
+// }
+
+export default combineReducers({
+	flagged,
+	status,
+	loading
+});
