@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { toggleFlag, fetchData } from '../actions/basic.jsx';
-import Patient from '../components/basic.jsx';
+import { toggleFlag, fetchData } from '../actions';
+import Patient from './Patient';
 
 const mapStateToProps = state => ({
 	flagged: state.patientApp.flagged,

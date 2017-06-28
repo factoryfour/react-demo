@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import patientApp from './modules/patients/reducers/basic.jsx';
+import { reducer as patientReducer } from './modules/patients';
 import AppContainer from './AppContainer.jsx';
 import authApp from '../utils/auth.reducer.jsx';
 
 const store = createStore(
 	combineReducers({
-		patientApp,
+		patientApp: patientReducer,
 		authApp
 	}),
 	applyMiddleware(

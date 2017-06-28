@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { TOGGLE_FLAG, REQUEST_DATA, RECEIVE_DATA } from '../actions/basic.jsx';
+import { TOGGLE_FLAG, REQUEST_DATA, RECEIVE_DATA } from './actions';
 
 function flagged(state = false, action) {
 	switch (action.type) {

@@ -1,6 +1,5 @@
 import React from 'react';
-// import Patient from '../modules/patients/components/basic.jsx';
-import PatientContainer from '../modules/patients/containers/basic.jsx';
+import { PatientContainer } from '../modules/patients';
 
 const Home = () => (
 	<div>
