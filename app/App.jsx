@@ -9,7 +9,7 @@ import About from './routes/About.jsx';
 import Home from './routes/Home.jsx';
 import AuthService from '../utils/AuthService.js';
 
-const App = ({ onLogoutSuccess }) => (
+const App = ({ isAuthenticated, onLogoutSuccess }) => (
 	<Router>
 		<div>
 			<ul>
@@ -27,13 +27,19 @@ const App = ({ onLogoutSuccess }) => (
 			</button>
 			<hr />
 
-			<Route exact path="/" component={Home} />
+			<Route
+				exact path="/"
+				render={() => (
+					<Home isAuthenticated={isAuthenticated} />
+				)}
+			/>
 			<Route path="/about" component={About} />
 		</div>
 	</Router>
 );
 
 App.propTypes = {
+	isAuthenticated: PropTypes.bool.isRequired,
 	onLogoutSuccess: PropTypes.func.isRequired
 };
 

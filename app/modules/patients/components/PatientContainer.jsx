@@ -10,7 +10,9 @@ class PatientContainer extends React.Component {
 			flagged: false,
 			loading: false,
 			onFlagClick: () => {
-				this.state.flagged = !this.state.flagged;
+				this.setState({
+					flagged: !this.state.flagged
+				});
 			},
 			status: {}
 		};
@@ -30,11 +32,16 @@ class PatientContainer extends React.Component {
 
 	loadData() {
 		this.state.loading = true;
+		this.setState({
+			loading: true
+		});
 
 		axios.get('https://api-dev.factoryfour.com/patients/health/status')
 			.then((response) => {
-				this.state.status = response.data;
-				this.status.loading = false;
+				this.setState({
+					loading: false,
+					status: response.data
+				});
 			}, (error) => {
 				console.error(error);
 			});

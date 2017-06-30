@@ -32,7 +32,12 @@ class AppContainer extends React.Component {
 	}
 
 	render() {
-		return <App onLogoutSuccess={this.state.onLogoutSuccess} />;
+		return (
+			<App
+				onLogoutSuccess={this.state.onLogoutSuccess}
+				isAuthenticated={this.state.isAuthenticated}
+			/>
+		);
 	}
 }
 
