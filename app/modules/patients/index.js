@@ -1,6 +1,5 @@
 import * as actions from './actions';
-import Patient from './components/Patient';
-import PatientContainer from './components/PatientContainer';
+import PatientContainer from './components/PatientContainer.jsx';
 import reducer from './reducer';
 
-export { actions, Patient, PatientContainer, reducer };
+export { actions, PatientContainer, reducer };

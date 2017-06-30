@@ -7,23 +7,18 @@ import { reducer as patientReducer } from './modules/patients';
 import AppContainer from './AppContainer.jsx';
 import authApp from '../utils/auth.reducer.jsx';
 
-const store = createStore(
-	combineReducers({
-		patientApp: patientReducer,
-		authApp
-	}),
-	applyMiddleware(
-		thunkMiddleware
-	)
-);
+// const store = createStore(
+// 	combineReducers({
+// 		patientApp: patientReducer,
+// 		authApp
+// 	}),
+// 	applyMiddleware(
+// 		thunkMiddleware
+// 	)
+// );
+//
+// store.subscribe(() =>
+// 	console.log(store.getState())
+// );
 
-store.subscribe(() =>
-	console.log(store.getState())
-);
-
-ReactDOM.render(
-	<Provider store={store}>
-		<AppContainer />
-	</Provider>,
-	document.getElementById('app')
-);
+ReactDOM.render(<AppContainer />, document.getElementById('app'));
