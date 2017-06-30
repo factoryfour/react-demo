@@ -9,12 +9,13 @@ class PatientContainer extends React.Component {
 		this.state = {
 			flagged: false,
 			loading: false,
-			onFlagClick: () => {
-				this.setState({
-					flagged: !this.state.flagged
-				});
-			},
 			status: {}
+		};
+
+		this.onFlagClick = () => {
+			this.setState(prevState => ({
+				flagged: !prevState.flagged
+			}));
 		};
 	}
 
@@ -31,7 +32,6 @@ class PatientContainer extends React.Component {
 	}
 
 	loadData() {
-		this.state.loading = true;
 		this.setState({
 			loading: true
 		});
@@ -52,7 +52,7 @@ class PatientContainer extends React.Component {
 			<Patient
 				flagged={this.state.flagged}
 				loading={this.state.loading}
-				onFlagClick={this.state.onFlagClick}
+				onFlagClick={this.onFlagClick}
 				status={this.state.status}
 			/>
 		);
@@ -62,26 +62,5 @@ class PatientContainer extends React.Component {
 PatientContainer.propTypes = {
 	isAuthenticated: PropTypes.bool.isRequired
 };
-
-// const mapStateToProps = state => ({
-// 	flagged: state.patientApp.flagged,
-// 	isAuthenticated: state.authApp.isAuthenticated,
-// 	loading: state.patientApp.loading,
-// 	status: state.patientApp.status
-// });
-//
-// const mapDispatchToProps = dispatch => ({
-// 	onFlagClick: () => {
-// 		dispatch(toggleFlag());
-// 	},
-// 	loadData: () => {
-// 		dispatch(fetchData());
-// 	}
-// });
-//
-// const PatientContainer = connect(
-// 	mapStateToProps,
-// 	mapDispatchToProps
-// )(Patient);
 
 export default PatientContainer;
