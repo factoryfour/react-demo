@@ -9,11 +9,16 @@ class AppContainer extends React.Component {
 		this.state = {
 			isAuthenticated: AuthService.loggedIn(),
 			onLoginSuccess: (profile) => {
-				this.state.profile = profile;
+				this.setState({
+					isAuthenticated: true,
+					profile
+				});
 			},
 			onLogoutSuccess: () => {
-				this.state.isAuthenticated = false;
-				this.state.profile = null;
+				this.setState({
+					isAuthenticated: false,
+					profile: null
+				});
 			},
 			profile: AuthService.getProfile()
 		};
@@ -27,7 +32,7 @@ class AppContainer extends React.Component {
 
 	componentWillUpdate(nextProps) {
 		if (!nextProps.isAuthenticated) {
-			this.authService.login(nextProps.onLoginSuccess);
+			this.authService.login(this.state.onLoginSuccess);
 		}
 	}
 
