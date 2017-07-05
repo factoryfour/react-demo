@@ -1,6 +1,6 @@
 import React from 'react';
 import App from './App.jsx';
-import AuthService from '../utils/AuthService';
+import AuthService from './modules/authentication/AuthService';
 
 class AppContainer extends React.Component {
 	constructor(props) {
@@ -39,25 +39,9 @@ class AppContainer extends React.Component {
 
 	render() {
 		return (
-			<App
-				onLogoutSuccess={this.onLogoutSuccess}
-				isAuthenticated={this.state.isAuthenticated}
-			/>
+			<App onLogoutSuccess={this.onLogoutSuccess} isAuthenticated={this.state.isAuthenticated} />
 		);
 	}
 }
-
-// const mapStateToProps = state => ({
-// 	isAuthenticated: state.authApp.isAuthenticated
-// });
-//
-// const mapDispatchToProps = dispatch => ({
-// 	onLoginSuccess: (profile) => {
-// 		dispatch(loginSuccess(profile));
-// 	},
-// 	onLogoutSuccess: () => {
-// 		dispatch(logoutSuccess());
-// 	}
-// });
 
 export default AppContainer;

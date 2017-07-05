@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { PatientContainer } from '../modules/patients';
+import PatientContainer from '../modules/patients';
 
 const Home = ({ isAuthenticated }) => (
 	<div>
