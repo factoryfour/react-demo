@@ -7,7 +7,7 @@ import {
 import PropTypes from 'prop-types';
 import About from './routes/About.jsx';
 import Home from './routes/Home.jsx';
-import AuthService from '../utils/AuthService.js';
+import AuthService from './modules/authentication/AuthService';
 
 const App = ({ isAuthenticated, onLogoutSuccess }) => (
 	<Router>
