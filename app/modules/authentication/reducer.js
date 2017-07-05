@@ -1,5 +1,5 @@
 /* eslint-disable*/
-import * as ActionTypes from './auth.actions.jsx';
+import * as ActionTypes from './actions';
 import AuthService from './AuthService';
 
 export default function authReducer(state = {

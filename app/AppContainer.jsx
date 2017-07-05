@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import App from './App.jsx';
-import { loginSuccess, logoutSuccess } from '../utils/auth.actions.jsx';
+import { actions } from './modules/authentication';
 
 const mapStateToProps = state => ({
 	isAuthenticated: state.authApp.isAuthenticated
@@ -8,10 +8,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 	onLoginSuccess: (profile) => {
-		dispatch(loginSuccess(profile));
+		dispatch(actions.loginSuccess(profile));
 	},
 	onLogoutSuccess: () => {
-		dispatch(logoutSuccess());
+		dispatch(actions.logoutSuccess());
 	}
 });
 

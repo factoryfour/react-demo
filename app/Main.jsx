@@ -5,12 +5,12 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { reducer as patientReducer } from './modules/patients';
 import AppContainer from './AppContainer.jsx';
-import authApp from '../utils/auth.reducer.jsx';
+import { reducer as authReducer } from './modules/authentication';
 
 const store = createStore(
 	combineReducers({
 		patientApp: patientReducer,
-		authApp
+		authApp: authReducer
 	}),
 	applyMiddleware(
 		thunkMiddleware
