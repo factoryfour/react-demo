@@ -24,7 +24,7 @@ const Snapshot = () => {
 		height: 500,
 		margin: 0
 	};
-	return (<div
+	return (<div className="col-xs-4"
   style={divstyle}
 	>
 		<h1><center>Snapshot!</center></h1>

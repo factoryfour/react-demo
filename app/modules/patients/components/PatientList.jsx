@@ -25,13 +25,15 @@ const PatientList = function () {
 		height: 500,
 		margin: 0
 	};
-	return (<ul
+	return (<div className="col-xs-8">
+		<ul
   style={divstyle}
-	>
-		<h1><center>Patient List</center></h1>
-		<li><Patient name="Nikita" /></li>
-		<li><Patient name="John" /></li>
-	</ul>
+		>
+			<h1><center>Patient List</center></h1>
+			<li><Patient name="Nikita" /></li>
+			<li><Patient name="John" /></li>
+		</ul>
+	</div>
 	);
 };
 
