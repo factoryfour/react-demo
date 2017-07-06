@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Order from './order.jsx';
 import Statuses from './statuses.jsx';
+import SearchBar from './searchbar.jsx';
 
 const statusFlags = [
 	{name: "error", flagged: true}, 
@@ -17,7 +18,8 @@ class Orders extends React.Component {
 		super(props);
 		this.state = {
 			title: 'Orders',
-			data: []
+			data: [],
+			filterText: ""
 		};
 	}
 
@@ -41,7 +43,6 @@ class Orders extends React.Component {
 					};
 				});
 			}, (error) => {
-				console.log("here")
 				console.log(error);
 			});
 	}
@@ -49,6 +50,7 @@ class Orders extends React.Component {
 	render() {
 		return (
 			<div>
+				<SearchBar />
 				<Statuses statuses={statusFlags} />
 				<table className="table table-striped">
 					<thead>
@@ -70,11 +72,6 @@ class Orders extends React.Component {
 
 Orders.propTypes = {
 	title: PropTypes.string.isRequired,
-	error: PropTypes.bool.isRequired,
-	pending: PropTypes.bool.isRequired,
-	inProgress: PropTypes.bool.isRequired,
-	complete: PropTypes.bool.isRequired,
-	incomplete: PropTypes.bool.isRequired,
 	data: PropTypes.object,
 };
 

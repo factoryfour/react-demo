@@ -7,7 +7,7 @@ const Home = () => (
 		<h2>Home</h2>
 		<p> Im home!!!</p>
 		<Patient name="Nikita" />
-		<Orders title="All Orders" error={true} pending={true} inProgress={true} complete={true} incomplete={true} />
+		<Orders title="All Orders" />
 	</div>
 );
 
