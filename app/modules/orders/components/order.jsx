@@ -12,11 +12,11 @@ class Order extends React.Component {
 	}
 
 	render() {
-		return (<div>
-			{this.props.vendor}
-			{this.props.name}
-			{this.props.submission}
-		</div>);
+		return (<tr>
+			<td>{this.props.vendor}</td>
+			<td>{this.props.name}</td>
+			<td>{this.props.submission}</td>
+		</tr>);
 	}
 }
 
