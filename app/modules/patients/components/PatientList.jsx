@@ -1,40 +1,39 @@
-import React, { Component } from 'react';
-import Patient from './basic.jsx';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Patient from './Patient.jsx';
 
-/* For when we need state-based component here
-class PatientList extends Component {
-
-	render() {
-		const divstyle = {
-			border: '1px solid blue',
-			width: 500
-		};
-
-		return (<ul
-  style={divstyle}>
-			<li><Patient name="Nikita" /></li>
-			<li><Patient name="John" /></li>
-		</ul>);
-	}
-}
-*/
-
-const PatientList = function () {
+const PatientList = ({ patients }) => {
 	const divstyle = {
 		border: '1px solid blue',
 		height: 500,
-		margin: 0
+		padding: 15
 	};
-	return (<div className="col-xs-8">
-		<ul
-  style={divstyle}
-		>
-			<h1><center>Patient List</center></h1>
-			<li><Patient name="Nikita" /></li>
-			<li><Patient name="John" /></li>
-		</ul>
+	return (<div className="col-xs-8" style={divstyle}>
+		<h1><center>Patient List</center></h1>
+		<table className="table">
+			<thead>
+				<tr>
+					<th>Last Name</th>
+					<th>First Name</th>
+					<th>Date of Birth</th>
+				</tr>
+			</thead>
+			<tbody>
+				{patients.map(patient => (
+					<Patient
+  firstName={patient.firstName}
+  lastName={patient.lastName}
+  DOB={patient.DOB}
+					/>
+				))}
+			</tbody>
+		</table>
 	</div>
 	);
+};
+
+PatientList.propTypes = {
+	patients: PropTypes.array.isRequired
 };
 
 export default PatientList;

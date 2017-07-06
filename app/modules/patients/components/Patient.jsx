@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+/*
 class Patient extends Component {
 	constructor(props) {
 		super(props);
@@ -17,9 +18,20 @@ class Patient extends Component {
 		);
 	}
 }
+*/
+
+const Patient = ({ firstName, lastName, DOB }) => (
+	<tr>
+		<td>{lastName}</td>
+		<td>{firstName}</td>
+		<td>{DOB}</td>
+	</tr>
+)
 
 Patient.propTypes = {
-	name: PropTypes.string.isRequired
+	firstName: PropTypes.string.isRequired,
+	lastName: PropTypes.string.isRequired,
+	DOB: PropTypes.string.isRequired
 };
 
 export default Patient;
