@@ -9,7 +9,7 @@ const patientSnap = (state = initialState, action) => {
 		});
 	case 'CANCEL_SNAPSHOT':
 		return update(state, {
-			patID: { $set: action.id }
+			patID: { $set: null}
 		});
 	default :
 		return state;
