@@ -1,34 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-/*
 class Patient extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			last: 'Singh'
+			firstName: props.firstName,
+			lastName: props.lastName,
+			DOB: props.DOB
 		};
 	}
 
 
 	render() {
-		return (<div>
-			<h3> This is a Patient: {this.props.name} {this.state.last}</h3>
-		</div>
+		return (<tr role="option" onClick={this.props.onClick}>
+			<td>{this.state.lastName}</td>
+			<td>{this.state.firstName}</td>
+			<td>{this.state.DOB}</td>
+		</tr>
 		);
 	}
 }
-*/
-
-const Patient = ({ firstName, lastName, DOB, onClick }) => (
-	<tr
-  onClick={onClick}
-	>
-		<td>{lastName}</td>
-		<td>{firstName}</td>
-		<td>{DOB}</td>
-	</tr>
-)
 
 Patient.propTypes = {
 	firstName: PropTypes.string.isRequired,
@@ -38,3 +30,15 @@ Patient.propTypes = {
 };
 
 export default Patient;
+
+/*
+const Patient = ({ firstName, lastName, DOB, onClick }) => (
+	<tr
+  onClick={onClick}
+	>
+		<td>{lastName}</td>
+		<td>{firstName}</td>
+		<td>{DOB}</td>
+	</tr>
+)
+*/
