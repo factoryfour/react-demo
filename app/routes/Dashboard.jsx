@@ -1,5 +1,4 @@
 import React from 'react';
-import Patient from '../modules/patients/components/Patient.jsx';
 
 const Dashboard = () => (
 	<div className="jumbotron">

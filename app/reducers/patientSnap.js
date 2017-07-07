@@ -1,19 +1,16 @@
-const patientSnap = (state = [], action) => {
+import update from 'immutability-helper';
+
+const patientSnap = (state = initialState, action) => {
 	switch (action.type) {
 	case 'SELECT_PATIENT':
-		return [
-			...state,
-			{
-				patID: action.id
-			}
-		];
+		console.log(action);
+		return update(state, {
+			patID: { $set: action.id }
+		});
 	case 'CANCEL_SNAPSHOT':
-		return [
-			...state,
-			{
-				patID: null
-			}
-		];
+		return update(state, {
+			patID: { $set: action.id }
+		});
 	default :
 		return state;
 	}

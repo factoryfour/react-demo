@@ -1,41 +1,7 @@
 import React from 'react';
-import Carousel from '../modules/patients/components/Carousel.jsx';
-import PatientList from '../modules/patients/components/PatientList.jsx';
-import Snapshot from '../modules/patients/components/Snapshot.jsx';
-
-// Dummy data to populate the tables/snapshots
-const patients = [
-	{
-		firstName: 'Doran',
-		lastName: 'Walsten',
-		DOB: '4/1/23',
-		ID: 123345
-	},
-	{
-		firstName: 'John',
-		lastName: 'Smith',
-		DOB: '1/1/11',
-		ID: 135214
-	}
-]
-
-const orders = [
-	{
-		device: 'sampleDevice',
-		patID: 123345,
-		status: false
-	},
-	{
-		device: 'sampleDevice2',
-		patID: 123345,
-		status: true
-	},
-	{
-		device: 'sample',
-		patID: 135214,
-		status: true
-	}
-]
+import Carousel from '../components/Carousel.jsx';
+import PatientListContainer from '../containers/PatientListContainer.jsx';
+import Snapshot from '../components/Snapshot.jsx';
 
 const Patients = () => (
 	<div>
@@ -46,8 +12,8 @@ const Patients = () => (
 				<Carousel />
 			</div>
 			<div className="row">
-				<PatientList patients={patients} />
-				<Snapshot orders={[]} />
+				<PatientListContainer />
+				<Snapshot />
 			</div>
 		</div>
 	</div>

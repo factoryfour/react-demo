@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Patient from './Patient.jsx';
 
-const PatientList = ({ patients }) => {
+const PatientList = ({ patients, onPatientClick }) => {
 	const divstyle = {
 		border: '1px solid blue',
 		height: 500,
@@ -21,9 +21,11 @@ const PatientList = ({ patients }) => {
 			<tbody>
 				{patients.map(patient => (
 					<Patient
+  key={patient.id}
   firstName={patient.firstName}
   lastName={patient.lastName}
   DOB={patient.DOB}
+  onClick={() => onPatientClick(patient.id)}
 					/>
 				))}
 			</tbody>
@@ -33,7 +35,15 @@ const PatientList = ({ patients }) => {
 };
 
 PatientList.propTypes = {
-	patients: PropTypes.array.isRequired
+	patients: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.number.isRequired,
+			firstName: PropTypes.string.isRequired,
+			lastName: PropTypes.string.isRequired,
+			DOB: PropTypes.string.isRequired
+		}).isRequired,
+	).isRequired,
+	onPatientClick: PropTypes.func.isRequired
 };
 
 export default PatientList;

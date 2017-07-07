@@ -20,8 +20,10 @@ class Patient extends Component {
 }
 */
 
-const Patient = ({ firstName, lastName, DOB }) => (
-	<tr>
+const Patient = ({ firstName, lastName, DOB, onClick }) => (
+	<tr
+  onClick={onClick}
+	>
 		<td>{lastName}</td>
 		<td>{firstName}</td>
 		<td>{DOB}</td>
@@ -31,7 +33,8 @@ const Patient = ({ firstName, lastName, DOB }) => (
 Patient.propTypes = {
 	firstName: PropTypes.string.isRequired,
 	lastName: PropTypes.string.isRequired,
-	DOB: PropTypes.string.isRequired
+	DOB: PropTypes.string.isRequired,
+	onClick: PropTypes.func.isRequired
 };
 
 export default Patient;
