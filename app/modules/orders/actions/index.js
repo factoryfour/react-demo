@@ -1,6 +1,12 @@
-export const getOrders = orders => {
+export const addOrder = order => {
 	return {
-		type: 'GET_ORDERS',
-		orders
+		type: "ADD_ORDER",
+		data
+	}
+}
+
+export function retrieveOrders() {
+	return {
+		type: "GET_ORDERS"
 	}
 }

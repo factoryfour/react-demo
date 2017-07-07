@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
-import orders from './orders'
+import { orders, loading } from './orders'
 
 const ordersApp  = combineReducers({
-	orders
+	orders,
+	loading
 })
 
 export default ordersApp

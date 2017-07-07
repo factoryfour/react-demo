@@ -2,24 +2,24 @@ import { connect } from 'react-redux'
 import { getOrders } from '../actions'
 import Orders from '../components/orders.jsx'
 
-const retrieveOrders = (orders) => {
-	return orders
-}
-
 const mapStateToProps = state => {
 	return {
-		orders: retrieveOrders(state.orders)
+		orders: state.orders,
+		loading: state.loading
 	}
 }
 
-// const mapDispatchToProps = dispatch => {
-// 	return {
-// 		dispatch()
-// 	}
-// }
+const mapDispatchToProps = dispatch => {
+	return {
+		loadData: () => {
+			dispatch(retrieveOrders())
+		}
+	}
+}
 
 const OrdersList = connect(
-	mapStateToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(Orders)
 
 export default OrdersList

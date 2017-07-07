@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Order from './order.jsx';
 
-const Orders = ({ orders }) => {
+const Orders = ({ orders, loading }) => {
 	return (
 		<div>
 			<table className="table table-striped">
@@ -13,7 +13,8 @@ const Orders = ({ orders }) => {
 				</thead>
 				<tbody>
 					<Order vendor="Vendor" name="Name" submission="Submission" />
-					{orders.map((order, index) => (
+					{loading ? 'Loading...': ''}
+					{orders.orders.map((order, index) => (
 						<Order key={index} vendor={order.id} name={order.deviceId} submission={order.createdAt}/>
 					))}
 				</tbody>
@@ -23,13 +24,14 @@ const Orders = ({ orders }) => {
 }
 
 Orders.propTypes = {
-	data: PropTypes.arrayOf(
+	orders: PropTypes.arrayOf(
 		PropTypes.shape({
 			vendor: PropTypes.string.isRequired,
 			name: PropTypes.string.isRequired,
 			submission: PropTypes.string.isRequired
 		}).isRequired
-	)
+	).isRequired,
+	loading: PropTypes.bool.isRequired
 };
 
 export default Orders;
