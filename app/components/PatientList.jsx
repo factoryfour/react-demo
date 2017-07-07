@@ -34,7 +34,7 @@ class PatientList extends Component {
   firstName={patient.firstName}
   lastName={patient.lastName}
   DOB={patient.DOB}
-  onClick={this.state.onPatientClick}
+  onClick={() => { this.state.onPatientClick(patient.id); }}
 						/>
 					))}
 				</tbody>
