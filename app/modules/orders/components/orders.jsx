@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Order from './order.jsx';
 
-const Orders = ({ orders, loading }) => {
+const Orders = ({orders, loading}) => {
 	return (
 		<div>
 			<table className="table table-striped">
