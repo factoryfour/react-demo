@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
+import { actions } from '../node_modules/@factoryfour/react-authentication';
 import App from './App.jsx';
-import { actions } from './modules/authentication';
 
 const mapStateToProps = state => ({
 	isAuthenticated: state.authApp.isAuthenticated
 });
 
 const mapDispatchToProps = dispatch => ({
-	onLoginSuccess: (profile) => {
-		dispatch(actions.loginSuccess(profile));
+	onLogin: (profile, token) => {
+		dispatch(actions.login(profile, token));
 	},
-	onLogoutSuccess: () => {
-		dispatch(actions.logoutSuccess());
+	onLogout: () => {
+		dispatch(actions.logout());
 	}
 });
 
