@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = {
 	entry: './app/Main.jsx',
 	output: {
@@ -9,7 +7,7 @@ module.exports = {
 		loaders: [
 			{
 				test: /\.jsx?$/,
-				include: [path.resolve(__dirname, 'app'), path.resolve(__dirname, 'node_modules/@factoryfour/react-authentication')],
+				include: /(app|node_modules\/@factoryfour\/react-authentication)/,
 				loader: 'babel-loader',
 				query: {
 					presets: ['react', 'es2015']
