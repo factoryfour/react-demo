@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
-import auth from '@factoryfour/react-authentication';
+import { AuthService } from '@factoryfour/react-authentication';
 import { LOGIN, LOGOUT } from './actions';
-
-const AuthService = auth.AuthService;
 
 function isAuthenticated(state = AuthService.loggedIn(), action) {
 	switch (action.type) {

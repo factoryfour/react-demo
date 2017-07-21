@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { actions } from './modules/authentication/actions.js';
+import { login, logout } from './modules/authentication/actions.js';
 import App from './App.jsx';
 
 const mapStateToProps = state => ({
@@ -8,10 +8,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 	onLogin: (profile, token) => {
-		dispatch(actions.login(profile, token));
+		dispatch(login(profile, token));
 	},
 	onLogout: () => {
-		dispatch(actions.logout());
+		dispatch(logout());
 	}
 });
 
