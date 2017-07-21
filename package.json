@@ -21,7 +21,7 @@
     "axios": "^0.16.2",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
-		"@factoryfour/react-authentication": "git+https://github.com/factoryfour/react-authentication.git#auth",
+		"react-authentication": "git+https://github.com/factoryfour/react-authentication.git#building",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
@@ -39,7 +39,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.9.0",
-    "webpack": "^2.5.1",
+    "webpack": "^3.0.0",
     "webpack-dev-server": "^2.4.5"
   },
   "private": true,

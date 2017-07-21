@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { actions } from '@factoryfour/react-authentication';
+import { actions } from './modules/authentication/actions.js';
 import App from './App.jsx';
 
 const mapStateToProps = state => ({
